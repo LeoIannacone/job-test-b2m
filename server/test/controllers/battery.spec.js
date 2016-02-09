@@ -1,11 +1,18 @@
+import _ from 'lodash'
 import Promise from 'bluebird'
 import proxyquire from 'proxyquire'
 
 const BatteryModel = {}
 const logger = {}
 
+const yearsDBData = [
+  {'_id': 2015, 'months': [12, 11, 8]},
+  {'_id': 2014, 'months': [6, 3]},
+  {'_id': 2013, 'months': [5, 4, 1]}
+]
+
 const resetModels = () => {
-  BatteryModel.distinctAsync = sinon.stub().returns(Promise.resolve([2012, 2013]))
+  BatteryModel.aggregate = sinon.stub().returns(Promise.resolve(yearsDBData))
   BatteryModel.findOneAsync = sinon.stub().returns(Promise.resolve(null))
   BatteryModel.createAsync = sinon.stub()
   BatteryModel.findAsync = sinon.stub().returns(Promise.resolve(['data']))
@@ -50,7 +57,11 @@ describe('battery', () => {
   it('getYears', () => {
     Battery.getYears(null, reply)
     return defer(() => {
-      expect(reply).to.have.been.calledWith([2012, 2013])
+      expect(reply).to.have.been.called
+      const result = reply.args[0][0]
+      expect(_.isEqual(result['2013'], [5, 4, 1])).to.be.true
+      expect(_.isEqual(result['2014'], [6, 3])).to.be.true
+      expect(_.isEqual(result['2015'], [12, 11, 8])).to.be.true
     })
   })
 

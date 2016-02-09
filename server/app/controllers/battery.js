@@ -95,8 +95,17 @@ ctrl.getInfoByYearMonth = (req, reply) => {
 }
 
 ctrl.getYears = (req, reply) => {
-  Battery.distinctAsync('year')
-  .then()
+  Battery.aggregate([{'$group': {
+    '_id': '$year',
+    'months': {$addToSet: '$month'}
+  }}])
+  .then(info => {
+    const result = {}
+    _.forEach(info, data => {
+      result[data['_id']] = data['months']
+    })
+    return result
+  })
   .then(reply)
   .catch(reply)
 }
