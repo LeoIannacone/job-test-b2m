@@ -30,20 +30,19 @@ const setCache = (year, month, day, level) => {
 }
 
 const clearCache = () => {
-  if (_.isEmpty(cache)) {
-    return
-  }
   const updatesP = []
-  const shallow = _.clone(cache)
-  cache = {}
-  _.map(shallow, (v, year) => {
-    _.map(shallow[year], (v, month) => {
-      _.map(shallow[year][month], (v, day) => {
-        const info = shallow[year][month][day]
-        updatesP.push(updateDB(year, month, day, info.averageLevel, info.totalRequests))
+  if (!_.isEmpty(cache)) {
+    const shallow = _.clone(cache)
+    cache = {}
+    _.map(shallow, (v, year) => {
+      _.map(shallow[year], (v, month) => {
+        _.map(shallow[year][month], (v, day) => {
+          const info = shallow[year][month][day]
+          updatesP.push(updateDB(year, month, day, info.averageLevel, info.totalRequests))
+        })
       })
     })
-  })
+  }
   Promise.all(updatesP)
   .catch(({message}) => {
     logger.error(message)
