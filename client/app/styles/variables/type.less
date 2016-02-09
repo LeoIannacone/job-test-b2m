@@ -1,0 +1,212 @@
+/**
+ * Typography classes
+ */
+
+@fontFamily-sans: "open-sans", arial, sans-serif;
+@fontFamily-serif: "source-serif-pro", "Times New Roman", Times, serif;
+@fontFamily-mono: "source-code-pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+
+/**
+ * Font sizes
+ */
+@fontSize-micro: 10px;
+@fontSize-smallest: 11px;
+@fontSize-smaller: 12px;
+@fontSize-small: 13px;
+@fontSize-base: 14px;
+@fontSize-large: 16px;
+@fontSize-larger: 18px;
+@fontSize-largest: 20px;
+@fontSize-jumbo: 24px;
+@fontSize-30px: 30px;
+@fontSize-mega: 50px;
+
+/**
+ * Line heights
+ */
+@lineHeight-tightest: 50px;
+@lineHeight-tighter: 40px;
+@lineHeight-tightish: 32px;
+@lineHeight-tight: 25px;
+@lineHeight-baseSans: 20px;
+@lineHeight-base: 20px;
+@lineHeight-loose: 18px;
+@lineHeight-looser: 16px;
+@lineHeight-loosest: 12px;
+
+/**
+ * Generic font mixins
+ */
+.font(@family: @fontFamily-sans, @style: normal, @weight: 300) {
+  font-family: @family;
+  font-style: @style;
+  font-weight: @weight;
+}
+
+.font-sans(@style: normal, @weight: 300) {
+  .font(@fontFamily-sans, @style, @weight)
+}
+
+.font-serif(@style: normal, @weight: 300) {
+  .font(@fontFamily-serif, @style, @weight)
+}
+
+.font-mono(@style: normal, @weight: 300) {
+  .font(@fontFamily-mono, @style, @weight)
+}
+
+
+/**
+ * You can use the appropriate font mixin: .font-sansI7, .font-sansN7, etc.
+ *
+ * The suffix defines the weight and style:
+ * N = normal
+ * I = italic
+ * 4 = normal font-weight
+ * 7 = bold font-weight
+ *
+ */
+
+/**
+ * Sans mixins
+ */
+.font-sansI1 {
+  .font-sans(italic, 100);
+}
+.font-sansI2 {
+  .font-sans(italic, 200);
+}
+.font-sansI3 {
+  .font-sans(italic, 300);
+}
+.font-sansI4 {
+  .font-sans(italic, 400);
+}
+.font-sansI5 {
+  .font-sans(italic, 500);
+}
+.font-sansI6 {
+  .font-sans(italic, 600);
+}
+.font-sansI7 {
+  .font-sans(italic, 700);
+}
+.font-sansN1 {
+  .font-sans(normal, 100);
+}
+.font-sansN2 {
+  .font-sans(normal, 200);
+}
+.font-sansN3 {
+  .font-sans(normal, 300);
+}
+.font-sansN4 {
+  .font-sans(normal, 400);
+}
+.font-sansN5 {
+  .font-sans(normal, 500);
+}
+.font-sansN6 {
+  .font-sans(normal, 600);
+}
+.font-sansN7 {
+  .font-sans(normal, 700);
+}
+
+/*
+ * Serif mixins
+ */
+.font-serifI1 {
+  .font-serif(italic, 100);
+}
+.font-serifI2 {
+  .font-serif(italic, 200);
+}
+.font-serifI3 {
+  .font-serif(italic, 300);
+}
+.font-serifI4 {
+  .font-serif(italic, 400);
+}
+.font-serifI5 {
+  .font-serif(italic, 500);
+}
+.font-serifI6 {
+  .font-serif(italic, 600);
+}
+.font-serifI7 {
+  .font-serif(italic, 700);
+}
+.font-serifN1 {
+  .font-serif(normal, 100);
+}
+.font-serifN2 {
+  .font-serif(normal, 200);
+}
+.font-serifN3 {
+  .font-serif(normal, 300);
+}
+.font-serifN4 {
+  .font-serif(normal, 400);
+}
+.font-serifN5 {
+  .font-serif(normal, 500);
+}
+.font-serifN6 {
+  .font-serif(normal, 600);
+}
+.font-serifN7 {
+  .font-serif(normal, 700);
+}
+
+/*
+ * Mono mixins
+ */
+.font-monoI1 {
+  .font-mono(italic, 100);
+}
+.font-monoI2 {
+  .font-mono(italic, 200);
+}
+.font-monoI3 {
+  .font-mono(italic, 300);
+}
+.font-monoI4 {
+  .font-mono(italic, 400);
+}
+.font-monoI5 {
+  .font-mono(italic, 500);
+}
+.font-monoI6 {
+  .font-mono(italic, 600);
+}
+.font-monoI7 {
+  .font-mono(italic, 700);
+}
+.font-monoN1 {
+  .font-mono(normal, 100);
+}
+.font-monoN2 {
+  .font-mono(normal, 200);
+}
+.font-monoN3 {
+  .font-mono(normal, 300);
+}
+.font-monoN4 {
+  .font-mono(normal, 400);
+}
+.font-monoN5 {
+  .font-mono(normal, 500);
+}
+.font-monoN6 {
+  .font-mono(normal, 600);
+}
+.font-monoN7 {
+  .font-mono(normal, 700);
+}
+
+.one-line-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

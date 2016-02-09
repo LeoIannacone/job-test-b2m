@@ -1,0 +1,11 @@
+{
+  "stage": 0,
+  "optional": [
+    "runtime"
+  ],
+  "ignore": [
+    "scripts/vendors/primus.js",
+    "scripts/vendors/gunzip.js",
+    "node_modules/worker-loader/index.js?inline!*"
+  ]
+}

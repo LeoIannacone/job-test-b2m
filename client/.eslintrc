@@ -1,0 +1,22 @@
+{
+  "extends": "standard",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
+    "standard/computed-property-even-spacing": 0,
+    "react/jsx-uses-react": 2,
+    "react/wrap-multilines": 2,
+    "max-len": [2, 100],
+    "no-console": 0
+  }
+}

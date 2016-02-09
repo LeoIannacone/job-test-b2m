@@ -1,0 +1,157 @@
+//
+// Colors
+// -------------------------
+@color-grayDark--background: #29374E;
+@color-grayLightenDark--background: #545D6E;
+@color-grayLight--textOnDark: #ECF1F5;
+@color-red: #E86A6B;
+@color-blueLight: #4294f0;
+@color-blue: #15A4FA;
+@color-blueDark: #5988E1;
+@color-blueWater--background: #08cae3;
+@color-blueWaterLight--background: #6bdfee;
+@color-black: #000000;
+@color-white: #FFFFFF;
+@color-yellow: #ffc913;
+@color-orange: #fec959;
+@color-eucalyptus: #18D8A7;
+@color-blueVeryDarkDesatured: #3a6272;
+
+// Gray's
+@color-grayDark: #A8B2C4;
+@color-grayDarker: #222222;
+@color-gray: #8c97b2;
+@color-graySilver: #c4c8cb;
+@color-grayLight: #d5dae6;
+@color-grayLighter: #eef1f7;
+@color-grayTinyLight: #eaecf2;
+@color-grayVeryLight: #F6F7F9;
+@color-grayLightest: #FAFAFA;
+
+@color-grayDarkAc: #33393d;
+
+@color-blueLighter: #c7d5f6;
+@color-blueDarker: #212C3F;
+@color-blueGrayDark--text: #414852;
+@color-blueGrayLight: #9EA5C1;
+@color-blue--formHighlight: #77A7E1;
+@color-blueLight--pageLoader: #e4ebf5;
+@color-blueVeryLight--appBackground: #F7F9FC;
+
+// Buttons
+// -------------------------
+@color-grayVeryLight--btnBackground: @color-gray;
+@color-grayVeryLight--btnBackgroundHighlight: darken(@color-grayVeryLight--btnBackground, 10%);
+
+@color-blue--btnDangerBackground: @color-red;
+
+@color-blue--btnPrimaryBackground: #15a4fa;
+@color-blue--btnPrimaryBackgroundHighlight: lighten(@color-blue--btnPrimaryBackground, 5%);
+
+@color-blue--btnBrowseBackground: #a8b2c4;
+@color-blue--btnBrowseBackgroundHighlight: lighten(@color-blue--btnBrowseBackground, 5%);
+
+@color-grayVeryLight--btnInfoBackground: @color-grayVeryLight;
+@color-grayVeryLight--btnInfoBackgroundHighlight: lighten(@color-grayVeryLight, 5%);
+
+@color-green--btnSuccessBackground: #18d8a7;
+@color-green--btnSuccessBackgroundHighlight: lighten(#f89406, 5%);
+
+@color-orange--btnWarningBackground: lighten(#f89406, 5%);
+@color-orange--btnWarningBackgroundHighlight: #f89406;
+
+@color-red--btnDangerBackground: @color-red;
+@color-red--btnDangerBackgroundHighlight: lighten(@color-red, 5%);
+
+@color-grayDarker--btnInverseBackground: #444;
+@color-grayDarker--btnInverseBackgroundHighlight: @color-grayDarker;
+
+// Tables
+// -------------------------
+@color-grayLightGray--tableBackgroundAccent: #f9f9f9;
+// for striping
+@color-grayLight--tableBorder: @color-grayLight;
+// table and cell border
+
+// Form states and alerts
+// -------------------------
+@color-darkYellow--warningText: #c09853;
+@color-yellowCream--warningBackground: #fcf8e3;
+
+@color-darkRed--errorText: @color-white;
+@color-lightRed--errorBackground: @color-red;
+
+@color-darkGreen--successText: #468847;
+@color-lightGreen--successBackground: #dff0d8;
+
+@color-blue--infoText: #3a87ad;
+@color-lightBlue--infoBackground: #d9edf7;
+
+
+// Notification colors
+@color-darkGray--notification: #888888;
+@color-gray--notification: #777777;
+@color-lightGray--notification: #bbbbbb;
+
+@color-black--notification: @color-black;
+@color-black--notificationShadow: #111111;
+
+@color-darkGray--notificationMessageSpinnerAfter: #333333;
+@color-yellow--notificationMessageSpinner: #c09853;
+@color-green--notificationSuccessMessageSpinner: #468847;
+
+@color-gray--notificationText: #f0f0f0;
+
+@color-red-notificationLink: @color-red;
+
+@color-blue--notificationInfoBackground: #61c4b8;
+@color-blue--notificationInfoBackgroundTop: #61c4b8;
+@color-blue--notificationInfoBackgroundBottom: #1992a3;
+
+@color-red--notificationErrorBackground: #dd6a45;
+@color-red--notificationErrorBackgroundTop: #dd6a45;
+
+
+@color-green--notificationSuccessBackground: #5fca4a;
+@color-green--notificationSuccessBackgroundTop: #5fca4a;
+@color-green--notificationSuccessBackgroundBottom: #098d38;
+
+@color-white--notificationBoxShadowLeftRight: rgba(255, 255, 255, 0.13);
+@color-black--notificationBoxShadowLeftLeft: rgba(0, 0, 0, 0.23);
+@color-black--notificationBoxShadowTopLine: rgba(0, 0, 0, 0.3);
+@color-white--notificationBoxShadowTopLineShort: rgba(255, 255, 255, 0.07);
+
+@color-black--notificationBoxShadowBottom: rgba(0, 0, 0, 0.6);
+@color-black--notificationBoxShadowSpread: rgba(0, 0, 0, 0.2);
+
+@color-black--notificationsBorder: rgba(0, 0, 0, 0.5);
+@color-gray--notificationsImageGradientLeft: #5c5b5b;
+@color-darkGray--notificationsImageGradientRight: #353535;
+@color-gray--notificationsBackground: #5c5b5b;
+@color-white--notificationsBoxShadowBottom: rgba(255, 255, 255, 0.24);
+@color-black--notificationsBoxShadowBlur: rgba(0, 0, 0, 0.6);
+
+@color-gradient--low: #dd6a45 linear-gradient(to top, #dd6a45, #91361a);
+@color-gradient--medium: #fecf23 linear-gradient(to top, #fecf23, #fd9215);
+@color-gradient--high: #80ca77 linear-gradient(to top, #80ca77, #74c769);
+
+// oauth buttons colors
+@color-green--oauthGithubBackground: #6CC644;
+@color-green--oauthBitbucketBackground: #205081;
+
+@color-green-classOrgNameBackground: #5fcac6;
+@color-blue--notificationBarBackground: #29374e;
+@color-red--notificationBarExpiredBackground: #f26a6a;
+@color-red--teacherTopLine: #e74c3c;
+
+@color-openAction: #6e798d;
+@color-label: #a8b2c4;
+@color-text: #29374e;
+@color-action: #15a4fa;
+@color-action-active: #7bc6f3;
+@color-closeAction: #e86a6b;
+@color-actionBackground: #15a4fa;
+@color-text-inverse: #ffffff;
+@color-topItemBackground: #5fcac6;
+@color-inputBorder: #a8b2c4;
+@color-teacherTopGeopattern: #e74c3c;

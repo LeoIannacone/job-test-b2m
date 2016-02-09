@@ -1,0 +1,36 @@
+html, body {
+  height: 100%;
+}
+
+#b2m {
+  .display(flex);
+  .box-direction(normal);
+  .flex-direction(column);
+  height: 100%;
+
+  .main {
+    .display(flex);
+    .flex-direction(row);
+    .flex(1, 0, auto);
+    height: 100%;
+  }
+
+  .app {
+    background-color: @color-blueVeryLight--appBackground;
+    .display(flex);
+    .flex-direction(row);
+    .flex(1, 0);
+
+    & > main {
+      .display(flex);
+      .flex-direction(column);
+      .flex(1, 0);
+
+      & > div.home {
+        .display(flex);
+        .flex-direction(column);
+        .flex(1);
+      }
+    }
+  }
+}

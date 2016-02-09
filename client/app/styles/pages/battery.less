@@ -1,0 +1,18 @@
+.battery {
+  background-color: @color-grayLightest;
+  .display(flex);
+  .flex(1, 0, auto);
+
+  .battery-tabs {
+    .display(flex);
+    .flex(1, 0, auto);
+    .tabs {
+      .flex(1, 0, auto);
+    }
+    .tab-panel {
+      padding: 30px;
+    }
+  }
+
+  @import 'battery/*.less';
+}

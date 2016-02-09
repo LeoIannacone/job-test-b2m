@@ -1,0 +1,92 @@
+.u-clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.u-uppercase {
+  text-transform: uppercase;
+}
+
+.u-pullRight {
+  float: right;
+}
+
+.u-pullLeft {
+  float: left;
+}
+
+.u-centered {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-dragging {
+  opacity: 0;
+}
+
+// Webkit-style focus
+.u-tabFocus {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.u-fade {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s 0.35s, opacity 0.35s linear;
+
+  &.u-fade--in {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.35s linear;
+  }
+}
+
+.u-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-horizontalRule {
+  border: 0;
+  background-color: #ddd;
+  height: 1px;
+  margin: 35px 6px;
+}
+
+.u-inline {
+  display: inline-block;
+}
+
+.u-isDisabled {
+  opacity: 0.65;
+}
+
+.u-centerItems {
+  .display(flex);
+  .align-items(center);
+  .flex-direction(row);
+  .justify-content(center);
+}
+
+.u-underlined {
+  color: @color-blueGrayDark--text;
+  text-decoration: none;
+  text-shadow: 0.03em 0 white, -0.03em 0 white, 0 0.03em white, 0 -0.03em white, 0.06em 0 white, -0.06em 0 white, 0.09em 0 white, -0.09em 0 white, 0.12em 0 white, -0.12em 0 white, 0.15em 0 white, -0.15em 0 white;
+  background-image: linear-gradient(@color-white, @color-white),linear-gradient(@color-white, @color-white),linear-gradient(@color-blueGrayDark--text, @color-blueGrayDark--text);
+  background-size: .05em 1px, .05em 1px, 1px 1px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  background-position: 0% 90%, 100% 90%, 0% 90%;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
