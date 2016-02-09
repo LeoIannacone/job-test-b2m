@@ -7,7 +7,7 @@ export default React.createClass({
   displayName: 'BatteryStats',
 
   propTypes: {
-    year: React.PropTypes.number.isRequired,
+    year: React.PropTypes.string.isRequired,
     month: React.PropTypes.number.isRequired
   },
 

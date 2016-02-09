@@ -7,14 +7,13 @@ export default React.createClass({
   displayName: 'BatteryMenu',
 
   propTypes: {
-    selectedMonth: React.PropTypes.number,
+    selectedMonth: React.PropTypes.number.isRequired,
     months: React.PropTypes.instanceOf(I.List).isRequired,
     onSelect: React.PropTypes.func
   },
 
   getDefaultProps() {
     return {
-      selectedMonth: 1,
       onSelect: () => {}
     }
   },

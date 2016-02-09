@@ -8,13 +8,13 @@ export default React.createClass({
   displayName: 'BatteryYear',
 
   propTypes: {
-    year: React.PropTypes.number.isRequired,
+    year: React.PropTypes.string.isRequired,
     months: React.PropTypes.instanceOf(I.List).isRequired
   },
 
   getInitialState() {
     return {
-      selectedMonth: 1
+      selectedMonth: this.props.months.sort().get(0)
     }
   },
 
