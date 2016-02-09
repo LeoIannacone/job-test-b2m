@@ -28,6 +28,7 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-babel-istanbul": "^0.11.0",
+    "gulp-eslint": "^1.1.1",
     "gulp-load-plugins": "^1.2.0",
     "gulp-mocha": "^2.2.0",
     "mocha": "^2.4.5",
