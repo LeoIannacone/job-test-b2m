@@ -1,12 +1,7 @@
-# B2M Application Challange
+Client
+=====================
 
-Hello!
-
-This is my solution for my challenge, I used ReactJS.
-
-NOTE: Known to work with node v0.10.* and npm v2
-
-### Run
+## Run
 You run this code by installing deps:
 ```
 npm i
@@ -14,7 +9,7 @@ npm i
 
 And then:
 ```
-./node_modules/.bin/gulp
+gulp
 ```
 
 Open http://localhost:3001
@@ -25,13 +20,8 @@ You can check code via `eslint` by typing:
 ./node_modules/.bin/gulp lint
 ```
 
-You can run tests (which are really few, unfortunately I did not have enough time to write more) with:
+You can run tests with:
 ```
 ./node_modules/.bin/gulp test
 ```
-
-
-# Enjoy!
-
-Cheers.
 
