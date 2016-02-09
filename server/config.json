@@ -1,0 +1,8 @@
+{
+  "host": "localhost",
+  "port": 3000,
+
+  "mongo": {
+    "uri": "mongodb://b2m:b2mpwd@home:27017/b2m"
+  }
+}

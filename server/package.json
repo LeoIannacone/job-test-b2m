@@ -1,0 +1,46 @@
+{
+  "name": "hapi-babel-experiment",
+  "version": "0.0.0",
+  "description": "Experimenting using Babel with Hapi",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dustinspecker/hapi-babel-experiment"
+  },
+  "author": "Dustin Specker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dustinspecker/hapi-babel-experiment/issues"
+  },
+  "homepage": "https://github.com/dustinspecker/hapi-babel-experiment",
+  "devDependencies": {
+    "babel": "^5.4.7",
+    "babel-eslint": "^4.1.8",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.5.3",
+    "del": "^2.2.0",
+    "eslint": "^1.10.3",
+    "eslint-config-standard": "^4.4.0",
+    "eslint-plugin-standard": "^1.3.1",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.4.5",
+    "proxyquire": "^1.7.4",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.2.2",
+    "hapi": "9.5.1",
+    "joi": "6.6.1",
+    "lodash": "^4.2.1",
+    "mongoose": "^4.4.2"
+  }
+}

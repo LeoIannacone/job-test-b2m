@@ -1,0 +1,7 @@
+{
+  "battery": [
+    "setLow",
+    "getInfoByYearMonth",
+    "getYears"
+  ]
+}
