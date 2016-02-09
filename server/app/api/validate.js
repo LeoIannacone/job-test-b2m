@@ -1,7 +1,7 @@
 import Joi from 'joi'
 import _ from 'lodash'
 
-import whitelist from '../config/api.json'
+import whitelist from './whitelist.json'
 
 const objects = Object.keys(whitelist)
 

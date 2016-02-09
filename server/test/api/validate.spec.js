@@ -2,7 +2,7 @@
 
 import Joi from 'joi'
 
-import validator from '../../app/lib/validate-controller'
+import validator from '../../app/api/validate'
 
 describe('validator', () => {
   describe('methods', () => {

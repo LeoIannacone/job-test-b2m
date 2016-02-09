@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-import validateController from '../lib/validate-controller'
+import validateApi from '../api/validate'
 import validatePayload from '../pre/validate-payload'
 import controller from '../controllers'
 
@@ -17,8 +17,8 @@ routes.push({
     handler: controller,
     validate: {
       payload: Joi.object().keys({
-        object: Joi.string().required().valid(validateController.objects),
-        method: validateController.methods(),
+        object: Joi.string().required().valid(validateApi.objects),
+        method: validateApi.methods(),
         data: Joi.object().optional()
       })
     }

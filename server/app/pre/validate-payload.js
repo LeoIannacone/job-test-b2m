@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-import schemas from '../config/schemas'
+import schemas from '../api/schemas'
 
 // Validate the given data by the schema
 //
