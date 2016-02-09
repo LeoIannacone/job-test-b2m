@@ -95,7 +95,7 @@ ctrl.getInfoByYearMonth = (req, reply) => {
 }
 
 ctrl.getYears = (req, reply) => {
-  Battery.aggregate([{'$group': {
+  Battery.aggregateAsync([{'$group': {
     '_id': '$year',
     'months': {$addToSet: '$month'}
   }}])

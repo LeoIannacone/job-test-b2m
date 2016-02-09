@@ -12,7 +12,7 @@ const yearsDBData = [
 ]
 
 const resetModels = () => {
-  BatteryModel.aggregate = sinon.stub().returns(Promise.resolve(yearsDBData))
+  BatteryModel.aggregateAsync = sinon.stub().returns(Promise.resolve(yearsDBData))
   BatteryModel.findOneAsync = sinon.stub().returns(Promise.resolve(null))
   BatteryModel.createAsync = sinon.stub()
   BatteryModel.findAsync = sinon.stub().returns(Promise.resolve(['data']))
