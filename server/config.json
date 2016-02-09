@@ -3,6 +3,6 @@
   "port": 3000,
 
   "mongo": {
-    "uri": "mongodb://b2m:b2mpwd@home:27017/b2m"
+    "uri": "mongodb://heroku:Lfpl8eiYNNE08CVv6Fw7Qk8AcOxYmrNU7h1PldQKTr3qsZVUDj1V52XdlwKZdRNZbBRauGkrljmu8PgxD3ZbmA@candidate.63.mongolayer.com:10587,candidate.64.mongolayer.com:10414/app47265282"
   }
 }

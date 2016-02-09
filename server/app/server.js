@@ -47,8 +47,11 @@ server.route(routes)
 
 server.ext('onPreResponse', responseTransform)
 
+const mongo_uri = process.env.MONGOHQ_URL || config.mongo.uri
 
-mongoose.connectAsync(config.mongo.uri, config.mongo.options)
+console.log(mongo_uri)
+
+mongoose.connectAsync(mongo_uri, config.mongo.options)
 .catch(handleErr)
 
 server.startAsync()
