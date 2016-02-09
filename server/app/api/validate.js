@@ -14,4 +14,4 @@ const methods = () => _.map(objects, obj => Joi.string().required()
     otherwise: Joi.forbidden()
   }))
 
-module.exports = {objects, methods}
+export default {objects, methods}

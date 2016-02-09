@@ -20,7 +20,7 @@ const validate = (value, schema) => Promise.resolve(Joi.validate(value, schema, 
 // Returns a Joi schema object.
 const getSchema = (object, method) => schemas[object][method]
 
-module.exports = (req, reply) => {
+export default (req, reply) => {
   const schema = getSchema(req.payload.object, req.payload.method)
 
   validate(req.payload.data, schema)

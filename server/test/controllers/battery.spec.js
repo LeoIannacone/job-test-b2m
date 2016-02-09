@@ -2,12 +2,15 @@ import Promise from 'bluebird'
 import proxyquire from 'proxyquire'
 
 const BatteryModel = {}
+const logger = {}
 
 const resetModels = () => {
   BatteryModel.distinctAsync = sinon.stub().returns(Promise.resolve([2012, 2013]))
   BatteryModel.findOneAsync = sinon.stub().returns(Promise.resolve(null))
   BatteryModel.createAsync = sinon.stub()
   BatteryModel.findAsync = sinon.stub().returns(Promise.resolve(['data']))
+
+  logger.error = sinon.stub()
 }
 
 const DELAY = 100
@@ -23,7 +26,8 @@ const resetStubSetTimeout = run => {
 }
 
 const getProxy = () => proxyquire('../../app/controllers/battery', {
-  '../models/battery': BatteryModel
+  '../models/battery': BatteryModel,
+  '../lib/logger': logger
 })
 
 describe('battery', () => {
@@ -82,11 +86,35 @@ describe('battery', () => {
     resetStubSetTimeout(true)
     Battery = getProxy()
     Battery.setLow(req, reply)
-    return Promise.delay(DELAY)
+    return Promise.delay()
     .then(() => {
       expect(BatteryModel.createAsync).to.have.been.calledWith({
         year, month, day, averageLevel: 25, totalRequests: 1
       })
+      expect(reply).to.have.been.calledWith()
+    })
+  })
+
+  it('setLow returns error', () => {
+    const date = new Date()
+    const level = 25
+    const timestamp = date.getTime()
+
+    const req = {
+      payload: {
+        data: {level, timestamp}
+      }
+    }
+    const errorMsg = 'This is a error message'
+    BatteryModel.createAsync.returns(Promise.reject(new Error(errorMsg)))
+    resetStubSetTimeout(true)
+    Battery = getProxy()
+    Battery.setLow(req, reply)
+
+    return Promise.delay()
+    .then(() => {
+      expect(reply).to.have.been.calledWith()
+      expect(logger.error).to.have.been.calledWith(errorMsg)
     })
   })
 
@@ -115,12 +143,14 @@ describe('battery', () => {
     resetStubSetTimeout(true)
     Battery = getProxy()
     Battery.setLow(req, reply)
-    return Promise.delay(DELAY)
+    Battery.setLow(req, reply)
+    return Promise.delay()
     .then(() => {
       expect(BatteryModel.createAsync).to.not.have.been.called
       expect(modelData.saveAsync).to.have.been.called
-      expect(modelData.totalRequests).to.be.equal(3)
-      expect(modelData.averageLevel).to.be.equal(30)
+      expect(modelData.totalRequests).to.be.equal(4)
+      expect(modelData.averageLevel).to.be.equal(28.75)
+      expect(reply).to.have.been.calledWith()
     })
   })
 })

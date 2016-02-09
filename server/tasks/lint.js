@@ -10,11 +10,10 @@ const $ = gulpPlugins()
 
 gulp.task('lint', () => {
   return gulp.src([
-    'app/scripts/**/*.js',
+    'app/**/*.js',
     'test/**/*.js',
     'gulpfile.js',
-    'tasks/*.js',
-    'webpack.config.js'
+    'tasks/*.js'
   ])
     .pipe($.eslint())
     .pipe($.eslint.format())

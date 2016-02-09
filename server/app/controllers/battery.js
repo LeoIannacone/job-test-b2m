@@ -1,4 +1,6 @@
+import {Promise} from 'bluebird'
 import _ from 'lodash'
+import logger from '../lib/logger'
 import Battery from '../models/battery'
 
 const STORE_CACHE_TIMEOUT = 1000
@@ -28,32 +30,33 @@ const setCache = (year, month, day, level) => {
 }
 
 const clearCache = () => {
+  if (_.isEmpty(cache)) {
+    return
+  }
   const updatesP = []
-  if (!_.isEmpty(cache)) {
-    const shallow = _.clone(cache)
-    cache = {}
-    _.map(shallow, (v, year) => {
-      _.map(shallow[year], (v, month) => {
-        _.map(shallow[year][month], (v, day) => {
-          const info = shallow[year][month][day]
-          updatesP.push(updateDB(year, month, day, info.averageLevel, info.totalRequests))
-        })
+  const shallow = _.clone(cache)
+  cache = {}
+  _.map(shallow, (v, year) => {
+    _.map(shallow[year], (v, month) => {
+      _.map(shallow[year][month], (v, day) => {
+        const info = shallow[year][month][day]
+        updatesP.push(updateDB(year, month, day, info.averageLevel, info.totalRequests))
       })
     })
-  }
+  })
   Promise.all(updatesP)
-  .then(() => clearCacheCycle())
-  .catch(({message}) => console.error(message))
+  .catch(({message}) => {
+    logger.error(message)
+  })
+  .finally(() => clearCacheCycle())
 }
 
 const clearCacheCycle = () => setTimeout(clearCache, STORE_CACHE_TIMEOUT)
 
-const fixAverage = (num, fix = 2) => {
-  return parseFloat(num.toFixed(fix))
-}
+const fixAverage = num => parseFloat(num.toFixed(2))
 
 const updateDB = (year, month, day, averageLevel, totalRequests) => {
-  Battery.findOneAsync({year, month, day})
+  return Battery.findOneAsync({year, month, day})
   .then(stats => {
     if (stats === null) {
       return Battery.createAsync({
@@ -99,4 +102,4 @@ ctrl.getYears = (req, reply) => {
 }
 
 clearCacheCycle()
-module.exports = ctrl
+export default ctrl

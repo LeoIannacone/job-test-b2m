@@ -27,4 +27,4 @@ schema.index({year: 1, month: 1, day: 1}, {unique: true})
 schema.set('toJSON', {virtuals: true})
 schema.set('toObject', {virtuals: true})
 
-module.exports = mongoose.model('battery', schema)
+export default mongoose.model('battery', schema)

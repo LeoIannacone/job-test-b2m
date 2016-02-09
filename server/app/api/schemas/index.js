@@ -1,5 +1,5 @@
 import Battery from './battery'
 
-module.exports = {
+export default {
   battery: Battery
 }

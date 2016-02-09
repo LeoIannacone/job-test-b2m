@@ -13,8 +13,7 @@ function _getTest() {
     'test/**/*.js'
   ], {read: false})
   .pipe($.mocha({
-    timeout: 10000,
-    reporter: 'dot'
+    timeout: 10000
   }))
 }
 

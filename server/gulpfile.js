@@ -6,7 +6,6 @@
 //
 
 var gulp = require('gulp')
-var sequence = require('run-sequence')
 
 // Setup babel transforms for tests and other task definitions
 require('babel/register')({
@@ -26,17 +25,3 @@ gulp.task('serve', [], function () {
 
 gulp.task('default', ['serve'])
 
-gulp.task('build-dev', ['clean'], function () {
-  gulp.start(['images', 'fonts', 'html', 'styles'])
-})
-
-// waits until clean is finished then builds the project
-gulp.task('build', function (done) {
-  sequence(
-    'clean',
-    ['images', 'fonts'],
-    ['styles', 'js'],
-    'html',
-    done
-  )
-})

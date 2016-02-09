@@ -25,4 +25,4 @@ routes.push({
   }
 })
 
-module.exports = routes
+export default routes
