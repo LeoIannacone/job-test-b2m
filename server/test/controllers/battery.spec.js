@@ -123,6 +123,7 @@ describe('battery', () => {
     Battery.setLow(req, reply)
 
     return Promise.delay()
+    .then(() => Promise.delay(DELAY))
     .then(() => {
       expect(reply).to.have.been.calledWith()
       expect(logger.error).to.have.been.calledWith(errorMsg)
@@ -155,7 +156,8 @@ describe('battery', () => {
     Battery = getProxy()
     Battery.setLow(req, reply)
     Battery.setLow(req, reply)
-    return Promise.delay()
+    return Promise.delay(DELAY)
+    .then(() => Promise.delay(DELAY))
     .then(() => {
       expect(BatteryModel.createAsync).to.not.have.been.called
       expect(modelData.saveAsync).to.have.been.called
