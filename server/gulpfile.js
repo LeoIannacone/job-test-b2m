@@ -8,7 +8,7 @@
 var gulp = require('gulp')
 
 // Setup babel transforms for tests and other task definitions
-require('babel/register')({
+require('babel-core/register')({
   ignore: [
     'node_modules/**'
   ]
