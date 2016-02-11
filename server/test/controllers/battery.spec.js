@@ -44,7 +44,7 @@ describe('battery', () => {
   beforeEach(() => {
     proxyquire.noCallThru()
     resetStubSetTimeout(false)
-    reply = sinon.stub()
+    reply = sinon.spy()
     resetModels()
     Battery = getProxy()
   })
@@ -54,15 +54,14 @@ describe('battery', () => {
     proxyquire.callThru()
   })
 
-  it('getYears', () => {
-    Battery.getYears(null, reply)
-    return defer(() => {
-      expect(reply).to.have.been.called
-      const result = reply.args[0][0]
+  it('getYears', done => {
+    reply = (result) => {
       expect(_.isEqual(result['2013'], [5, 4, 1])).to.be.true
       expect(_.isEqual(result['2014'], [6, 3])).to.be.true
       expect(_.isEqual(result['2015'], [12, 11, 8])).to.be.true
-    })
+      done()
+    }
+    Battery.getYears(null, reply)
   })
 
   it('getInfoByYearMonth', () => {
@@ -80,7 +79,7 @@ describe('battery', () => {
     })
   })
 
-  it('setLow inserts new data', () => {
+  it('setLow inserts new data', done => {
     const date = new Date()
     const level = 25
     const timestamp = date.getTime()
@@ -94,19 +93,23 @@ describe('battery', () => {
         data: {level, timestamp}
       }
     }
+
+    BatteryModel.createAsync = arg => {
+      expect(arg.year).to.be.equal(year)
+      expect(arg.month).to.be.equal(month)
+      expect(arg.day).to.be.equal(day)
+      expect(arg.averageLevel).to.be.equal(25)
+      expect(arg.totalRequests).to.be.equal(1)
+      expect(reply).to.have.been.calledWith()
+      done()
+    }
+
     resetStubSetTimeout(true)
     Battery = getProxy()
     Battery.setLow(req, reply)
-    return Promise.delay()
-    .then(() => {
-      expect(BatteryModel.createAsync).to.have.been.calledWith({
-        year, month, day, averageLevel: 25, totalRequests: 1
-      })
-      expect(reply).to.have.been.calledWith()
-    })
   })
 
-  it('setLow returns error', () => {
+  it('setLow returns error', done => {
     const date = new Date()
     const level = 25
     const timestamp = date.getTime()
@@ -120,17 +123,17 @@ describe('battery', () => {
     BatteryModel.createAsync.returns(Promise.reject(new Error(errorMsg)))
     resetStubSetTimeout(true)
     Battery = getProxy()
-    Battery.setLow(req, reply)
 
-    return Promise.delay()
-    .then(() => Promise.delay(DELAY))
-    .then(() => {
+    logger.error = (msg) => {
       expect(reply).to.have.been.calledWith()
-      expect(logger.error).to.have.been.calledWith(errorMsg)
-    })
+      expect(msg).to.be.equal(errorMsg)
+      done()
+    }
+
+    Battery.setLow(req, reply)
   })
 
-  it('setLow updates data', () => {
+  it('setLow updates data', done => {
     const date = new Date()
     const level = 25
     const timestamp = date.getTime()
@@ -147,7 +150,13 @@ describe('battery', () => {
 
     const modelData = {
       year, month, day, averageLevel: 32.5, totalRequests: 2,
-      saveAsync: sinon.stub()
+      saveAsync() {
+        expect(BatteryModel.createAsync).to.not.have.been.called
+        expect(this.totalRequests).to.be.equal(4)
+        expect(this.averageLevel).to.be.equal(28.75)
+        expect(reply).to.have.been.calledWith()
+        done()
+      }
     }
 
     BatteryModel.findOneAsync.returns(Promise.resolve(modelData))
@@ -156,14 +165,5 @@ describe('battery', () => {
     Battery = getProxy()
     Battery.setLow(req, reply)
     Battery.setLow(req, reply)
-    return Promise.delay(DELAY)
-    .then(() => Promise.delay(DELAY))
-    .then(() => {
-      expect(BatteryModel.createAsync).to.not.have.been.called
-      expect(modelData.saveAsync).to.have.been.called
-      expect(modelData.totalRequests).to.be.equal(4)
-      expect(modelData.averageLevel).to.be.equal(28.75)
-      expect(reply).to.have.been.calledWith()
-    })
   })
 })
